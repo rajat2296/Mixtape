@@ -1,0 +1,26 @@
+
+
+
+.btn-facebook {
+  color: #fff;
+  background-color: #3B5998;
+  border-color: #133783;
+}
+
+.login-div {
+  position: absolute;
+  font-size: 20px;
+  top: 50%;
+  left: 40%;
+}
+
+.btn-login {
+  color:#fff;
+  background-color:#1db954;
+  border-color:#1aa34a
+}
+
+.login-error {
+  color: white;
+}
+

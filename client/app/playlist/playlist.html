@@ -1,0 +1,73 @@
+<!--<div class="row">
+	<div class="col-md-2">
+		<div class="nav-side-menu"> 
+		  <div class="user-profile">
+		  	<button type="button" class="btn btn-user">
+		  		<span class="glyphicon glyphicon-user"></span>
+		  	</button>
+		  	<br/>
+		  	<h4>Welcome {{user.display_name}}</h4>
+		  	<h6>{{user.followers.total}} followers</h6>
+		  </div>	
+		  <div class="menu-list">
+		    <ul id="menu-content" class="menu-content collapse out">
+		        <div>
+		            <li class="active">
+		              <strong>&nbsp;&nbsp;<span class="glyphicon glyphicon-music"></span>&nbsp;&nbsp; Top Artists</strong>
+		            </li>             
+		        </div>
+		    </ul>
+		    &nbsp;&nbsp;<h5 class="glyphicon glyphicon-log-out text-center" ng-click="logout()">&nbsp;Logout</h5>
+		  </div>
+		</div>
+	</div>
+	<div class="col-md-10">
+		<div class="col-md-3 card" ng-repeat="artist in artists" style="margin:10px;padding:10px">
+			<img ng-src={{artist.images[0].url}} alt="Avatar" style="width:30vh; height:30vh;">
+		 	<div class="container">
+		    	<h4><b>{{artist.name}}</b></h4>
+		    	<h4><b>{{artist.followers.total}} followers</b></h4>
+		  	</div>
+		</div>		
+	</div>		
+</div>-->
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h4 class="text-center">Welcome {{user.display_name}}</h4>
+		</div>		
+	</div>
+	<div class="row">
+		<div class="col-md-8">
+			<label>Search track to find similar ones</label>
+	        <input type="text" class="form-control"
+	         	placeholder="search track"
+	        	type="text"
+	         	ng-model="selectedTrack"
+	         	uib-typeahead="track.displayName as track.name for track in searchTrackByName($viewValue)"
+	         	typeahead-on-select="searchSimilarTracks($item, $model, $label)"
+	         	class="form-control"
+	         	ng-enter="searchSimilarTracks(selectedTrack)"
+	        />	
+		</div>		
+	</div>	
+	<br/>
+	<div class="row" ng-if="recommendations.length>0">
+		<div class="col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading">Recommendations</div>
+				<div class="panel-body">
+					<table class="table table-condensed">
+						<tr ng-repeat = "track in recommendations">
+							<td>
+								<span>{{track.name}}</span>
+								<span>({{track.artists[0].name}})</span>
+							</td>
+						</tr>		
+					</table>
+				</div>
+			</div>
+		</div>	
+	</div>	
+</div>
+
